@@ -10,6 +10,9 @@
 #include "cam_debug_util.h"
 #include "camera_main.h"
 
+extern int aw86006_ois_init(void *o_ctrl);
+extern int aw86006_ois_exit(void);
+
 static int cam_ois_subdev_close_internal(struct v4l2_subdev *sd,
 	struct v4l2_subdev_fh *fh)
 {
@@ -372,6 +375,7 @@ static int cam_ois_component_bind(struct device *dev,
 
 	platform_set_drvdata(pdev, o_ctrl);
 	o_ctrl->cam_ois_state = CAM_OIS_INIT;
+	aw86006_ois_init((void *)o_ctrl);
 	CAM_DBG(CAM_OIS, "Component bound successfully");
 	return rc;
 unreg_subdev:
@@ -419,6 +423,7 @@ static void cam_ois_component_unbind(struct device *dev,
 	kfree(o_ctrl->io_master_info.cci_client);
 	platform_set_drvdata(pdev, NULL);
 	v4l2_set_subdevdata(&o_ctrl->v4l2_dev_str.sd, NULL);
+	aw86006_ois_exit();
 	kfree(o_ctrl);
 }
 

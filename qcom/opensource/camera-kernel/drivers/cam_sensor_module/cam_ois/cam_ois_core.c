@@ -389,6 +389,9 @@ static int cam_ois_fw_download(struct cam_ois_ctrl_t *o_ctrl)
 		return rc;
 	}
 
+	aw_firmware_update(fw);
+	return 0;
+
 	total_bytes = fw->size;
 	i2c_reg_setting.addr_type = CAMERA_SENSOR_I2C_TYPE_BYTE;
 	i2c_reg_setting.data_type = CAMERA_SENSOR_I2C_TYPE_BYTE;
