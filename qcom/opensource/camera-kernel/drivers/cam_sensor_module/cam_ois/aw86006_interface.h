@@ -2,7 +2,7 @@
 #ifndef AW86006_INTERFACE_H
 #define AW86006_INTERFACE_H
 
-#define AW_FW_VERSION_4
+// #define AW_FW_VERSION_4
 
 #ifdef CONFIG_MSMB_CAMERA
 #include <soc/qcom/camera2.h>

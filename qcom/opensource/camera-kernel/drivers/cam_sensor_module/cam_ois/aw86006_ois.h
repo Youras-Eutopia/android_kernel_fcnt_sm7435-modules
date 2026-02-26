@@ -5,7 +5,7 @@
 #ifndef AW86006_OIS_H
 #define AW86006_OIS_H
 
-#define AW_FW_VERSION_4
+// #define AW_FW_VERSION_4
 
 /* Log Format */
 #define AW_LOGI(format, ...) \
